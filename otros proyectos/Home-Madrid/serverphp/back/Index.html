@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+  .btn {
+  border: none;
+  background-color: #CCC;
+  font-size: 16px;
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 2px;
+  margin-left: 2px;
+  padding-top: 14px;
+  padding-right: 28px;
+  padding-bottom: 14px;
+  padding-left: 28px;
+
+  }
+.btn:hover {background: #eee;}
+.success {color: green;}
+  .info {color: dodgerblue;}
+  .warning {color: orange;}
+  .danger {color: red;}
+  .default {color: black;}
+  </style>
+  </head>
+  <body>
+<h2>Abriendo Puertas...</h2>
+
+  <a href="http://devpablo.com/Home/OpenDoor.php?Exterior=1">
+    <button class="btn success">Acceso Edificio</button>
+  </a>
+    </br>
+    </br>
+  <a href="http://devpablo.com/Home/OpenDoor.php?Medio=1">
+    <button class="btn warning">Abrir Medio</button>
+  </a>
+</br>
+</br>
+  <a href="http://devpablo.com/Home/OpenDoor.php?PuertaA=1">
+    <button class="btn danger">Abrir Puerta A</button>
+  </a>
+</br>
+</br>
+  <a href="http://devpablo.com/Home/OpenDoor.php?PuertaB=1">
+    <button class="btn default">Abrir Puerta B</button>
+  </a>
+
+</br>
+</br>
+<h2>Generar links de uso  unico</h2>
+</br>
+
+  <a href="http://devpablo.com/Home/generarLink.php?Exterior=1&Medio=1">
+    <button class="btn default">Generar para Entrada y medio (Un solo uso)</button>
+  </a>
+
+
+    <a href="http://devpablo.com/Home/generarLink.php?Exterior=1&Medio=1&PuertaA=1">
+    <button class="btn default">Generar para Entrada, Medio y Puerta A (un solo uso)</button>
+  </a>
+
+    <a href="http://devpablo.com/Home/generarLink.php?Exterior=10&Medio=10&PuertaA=10">
+    <button class="btn default">Generar para Entrada, Medio y Puerta A (10 veces)</button>
+  </a>
+</body>
+  </html>

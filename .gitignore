@@ -30,3 +30,52 @@
 *.exe
 *.out
 *.app
+gps/test1/.DS_Store
+blu/.DS_Store
+blu/test1/.DS_Store
+BrazoRobot/.DS_Store
+camara_fun_Con_Web/.DS_Store
+camara_fun_Con_Web/reconocimiento/.DS_Store
+camara_fun_Con_Web/reconocimiento/reconocimiento/.DS_Store
+camara_fun_Con_Web/solo service/.DS_Store
+camara_fun_Con_Web/solo service/ardu-control/.DS_Store
+camara_fun_Con_Web/solo service/sketch_apr27b copy/.DS_Store
+camara_fun_Con_Web/solo service/sketch_apr27b/.DS_Store
+esp32/.DS_Store
+giroscopio/.DS_Store
+gps/.DS_Store
+Home-Madrid 2.0/.DS_Store
+Home-Madrid 2.0/button_simple/.DS_Store
+Home-Madrid 2.0/button_simple/button_list/.DS_Store
+Home-Madrid 2.0/Control_Remoto(descartado)/.DS_Store
+Home-Madrid 2.0/Control_Remoto_multiWifi/.DS_Store
+Home-Madrid 2.0/Control_Remoto_multiWifi_New/.DS_Store
+Home-Madrid 2.0/Control_Remoto_multiWifi/Control_Remoto_Mega(mod color)/.DS_Store
+Home-Madrid 2.0/Control_Remoto_multiWifi/Control_Remoto_Mega/.DS_Store
+Home-Madrid 2.0/Control_Remoto_multiWifi_New/Control_Remoto_Mega/.DS_Store
+Home-Madrid 2.0/Controlador_Lampara_Techo/.DS_Store
+Home-Madrid 2.0/esp88xxx - ClienteServidor/.DS_Store
+Home-Madrid 3.0/.DS_Store
+Home-Madrid 3.0/Control_Remoto_multiWifi/.DS_Store
+Home-Madrid 3.0/Control_Remoto_multiWifi/Control_Remoto_Mega Ant/.DS_Store
+Home-Madrid 3.0/Control_Remoto_multiWifi/Control_Remoto_Mega/.DS_Store
+Home-Madrid 3.0/Controlador_Lampara_Techo/.DS_Store
+Home-Madrid 3.0/Controlador_Lampara_Techo_2/.DS_Store
+Home-Madrid 3.0/Controlador_Lampara_Techo_3/.DS_Store
+Home-Madrid 3.0/Controlador_Lampara_Techo_4/.DS_Store
+Home-Madrid 3.0/Controlador_Lampara_Techo_Mini/.DS_Store
+Home-Madrid 3.0/Descartados/.DS_Store
+Home-Madrid 3.0/Descartados/Control_Remoto_Portatil/.DS_Store
+Home-Madrid 3.0/Descartados/Control_Remoto_Portatil/Control_Remoto_Portatil_Mega/.DS_Store
+Home-Madrid 3.0/Flor/.DS_Store
+Home-Madrid 3.0/FlorServo/.DS_Store
+Home-Madrid 3.0/Joystick_Screen/.DS_Store
+Home-Madrid 3.0/New directory/Home/.DS_Store
+Home-Madrid 3.0/New directory/Home/images/.DS_Store
+infrarrojo/.DS_Store
+joystick/.DS_Store
+joystick/brazo/.DS_Store
+joystick/EstabilizadorConRodamieto/.DS_Store
+joystick/otros/.DS_Store
+joystick/otros/ESP32-Examples-main/.DS_Store
+joystick/otros/ESP8266-Examples-master/.DS_Store

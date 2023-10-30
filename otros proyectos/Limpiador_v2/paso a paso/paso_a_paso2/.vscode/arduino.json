@@ -1,0 +1,6 @@
+{
+    "sketch": "paso_a_paso2.ino",
+    "board": "arduino:avr:uno",
+    "port": "/dev/tty.usbmodem143201",
+    "programmer": "arduino:arduinoasispatmega32u4"
+}
