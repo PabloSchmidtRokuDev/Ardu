@@ -4,23 +4,23 @@
 #include <AccelStepper.h>
 
 // Define stepper motor connections and motor interface type. Motor interface type must be set to 1 when using a driver:
-#define dirPin1 12
-#define stepPin1 11
+#define dirPin1 14
+#define stepPin1 27
 
-#define dirPin2 10
-#define stepPin2 9
+#define dirPin2 12
+#define stepPin2 13
 
-#define dirPin3 8
-#define stepPin3 7
+#define dirPin3 2
+#define stepPin3 15
 
-#define dirPin4 6
-#define stepPin4 5
+#define dirPin4 16
+#define stepPin4 4
 
-#define dirPin5 4
-#define stepPin5 3
+#define dirPin5 25
+#define stepPin5 25
 
-#define dirPin6 2
-#define stepPin6 13
+#define dirPin6 33
+#define stepPin6 32
 
 
 
@@ -37,17 +37,19 @@ AccelStepper stepper6 = AccelStepper(motorInterfaceType, stepPin6, dirPin6);
 
 
 void setSpeedAceleracion(int speed, int aceleracion) {
-  stepper1.setMaxSpeed(speed);
-  stepper1.setAcceleration(aceleracion);
 
-   stepper2.setMaxSpeed(speed);
-   stepper2.setAcceleration(aceleracion);
+  //150, 10
+  stepper1.setMaxSpeed(50);
+  stepper1.setAcceleration(5);
 
-  stepper3.setMaxSpeed(speed);
-  stepper3.setAcceleration(aceleracion);
+   stepper2.setMaxSpeed(50);
+   stepper2.setAcceleration(5);
 
-  stepper4.setMaxSpeed(speed);
-  stepper4.setAcceleration(aceleracion);
+  stepper3.setMaxSpeed(500);
+  stepper3.setAcceleration(100);
+
+  stepper4.setMaxSpeed(500);
+  stepper4.setAcceleration(100);
 
   stepper5.setMaxSpeed(speed);
   stepper5.setAcceleration(aceleracion);
@@ -64,7 +66,7 @@ void setup() {
   Serial.println("start!!");
 
   //setPinsInverted
-  setSpeedAceleracion(2000, 300);
+  setSpeedAceleracion(150, 10);
 
   stepper1.setPinsInverted(true);
   stepper2.setPinsInverted(true);
@@ -132,39 +134,39 @@ bool end = false;
 String myString = "";
 
 void loop() {
-   stepper1.run();
-   stepper2.run();
-  stepper3.run();
+   stepper1.run();//br3 o 4
+   stepper2.run();//br3 o 4
+   stepper3.run();//br cam
 
-   stepper4.run();
-   stepper5.run();
-   stepper6.run();
+    stepper4.run();//br2
+    stepper5.run();//br cam
+    stepper6.run();
 
   // if (Calibrado()) {
 
-    while (Serial.available() > 0) {
-      myString = Serial.readString();
-      String letra = myString.substring(0, 1);
+    // while (Serial.available() > 0) {
+    //   myString = Serial.readString();
+    //   String letra = myString.substring(0, 1);
 
-      int textLen = myString.length() - 1;
-      String resto = myString.substring(1, textLen);
+    //   int textLen = myString.length() - 1;
+    //   String resto = myString.substring(1, textLen);
 
-      Serial.print("letra: ");
-      Serial.println(letra);
+    //   Serial.print("letra: ");
+    //   Serial.println(letra);
 
-      if (letra == "p") {
-        int Valor = resto.toInt();
+    //   if (letra == "p") {
+    //     int Valor = resto.toInt();
 
-      stepper2.moveTo(Valor);
-      stepper3.moveTo(Valor);
-      stepper4.moveTo(Valor);
-      stepper5.moveTo(Valor);
-      stepper6.moveTo(Valor);
-      stepper1.moveTo(Valor);
+    //   stepper2.moveTo(Valor);
+    //   stepper3.moveTo(Valor);
+    //   stepper4.moveTo(Valor);
+    //   stepper5.moveTo(Valor);
+    //   stepper6.moveTo(Valor);
+    //   stepper1.moveTo(Valor);
 
-      } else if (letra == "s") {
-      }
-    }
+    //   } else if (letra == "s") {
+    //   }
+    // }
 
 
     bool f = stepper1.currentPosition() == pos1;
@@ -185,7 +187,7 @@ void loop() {
      if (f) {
        //if (!end) {}
        if (stepper1.currentPosition() == 0) {
-         pos1 = random(0, 5000);
+         pos1 = random(0, 1000);
        } else {
          pos1 = 0;
        }
@@ -193,158 +195,158 @@ void loop() {
 
 
        stepper2.moveTo(pos1);
-       stepper3.moveTo(pos1);
-       stepper4.moveTo(pos1);
-       stepper5.moveTo(pos1);
+       stepper3.moveTo(pos1*8);
+       stepper4.moveTo(pos1*8);
+       stepper5.moveTo(pos1*8);
        stepper6.moveTo(pos1);
        stepper1.moveTo(pos1);
      }
    
 }
 
-bool Calibrado() {
-  bool flag = false;
+// bool Calibrado() {
+//   bool flag = false;
 
-  if (calibrandoEstado != cal_Completo) {
-    if (running) {
-      //Serial.print(" Sensor: ");
-      //Serial.print(analogRead(A6));
-      if (analogRead(A6) <= 100) {
-        Serial.println(" Sensor....");
-        running = false;
-      } else {
-        // Serial.println(" running.");
+//   if (calibrandoEstado != cal_Completo) {
+//     if (running) {
+//       //Serial.print(" Sensor: ");
+//       //Serial.print(analogRead(A6));
+//       if (DigitalRead(A6) <= 100) {
+//         Serial.println(" Sensor....");
+//         running = false;
+//       } else {
+//         // Serial.println(" running.");
 
-        stepper1.run();
-        stepper2.run();
-        stepper3.run();
-        stepper4.run();
-        stepper5.run();
-        stepper6.run();
-      }
+//         stepper1.run();
+//         stepper2.run();
+//         stepper3.run();
+//         stepper4.run();
+//         stepper5.run();
+//         stepper6.run();
+//       }
 
-    } else if (calibrandoEstado == cal_Pendiente) {
-      Serial.println(" cal_Pendiente....");
-     // setSpeedAceleracion(2000, 500);
+//     } else if (calibrandoEstado == cal_Pendiente) {
+//       Serial.println(" cal_Pendiente....");
+//      // setSpeedAceleracion(2000, 500);
 
-      stepper1.moveTo(-30000);
-      stepper2.moveTo(-30000);
-      stepper3.moveTo(-30000);
-      stepper4.moveTo(-30000);
-      stepper5.moveTo(-30000);
-      stepper6.moveTo(-30000);
+//       stepper1.moveTo(-300);
+//       stepper2.moveTo(-300);
+//       stepper3.moveTo(-300);
+//       stepper4.moveTo(-300);
+//       stepper5.moveTo(-300);
+//       stepper6.moveTo(-300);
 
-      calibrandoEstado = cal_go_0_all;
-      running = true;
-    } else if (calibrandoEstado == cal_go_0_all) {
-      Serial.println(" cal_go_0_all....");
+//       calibrandoEstado = cal_go_0_all;
+//       running = true;
+//     } else if (calibrandoEstado == cal_go_0_all) {
+//       Serial.println(" cal_go_0_all....");
 
-      stepper1.setCurrentPosition(0);
-      stepper2.setCurrentPosition(0);
-      stepper3.setCurrentPosition(0);
-      stepper4.setCurrentPosition(0);
-      stepper5.setCurrentPosition(0);
-      stepper6.setCurrentPosition(0);
+//       stepper1.setCurrentPosition(0);
+//       stepper2.setCurrentPosition(0);
+//       stepper3.setCurrentPosition(0);
+//       stepper4.setCurrentPosition(0);
+//       stepper5.setCurrentPosition(0);
+//       stepper6.setCurrentPosition(0);
 
-      stepper1.runToNewPosition(500);
-      stepper2.runToNewPosition(500);
-      stepper3.runToNewPosition(500);
-      stepper4.runToNewPosition(500);
-      stepper5.runToNewPosition(500);
-      stepper6.runToNewPosition(500);
+//       stepper1.runToNewPosition(500);
+//       stepper2.runToNewPosition(500);
+//       stepper3.runToNewPosition(500);
+//       stepper4.runToNewPosition(500);
+//       stepper5.runToNewPosition(500);
+//       stepper6.runToNewPosition(500);
 
-      stepper1.moveTo(-3000);
-      running = true;
-      calibrandoEstado = cal_go_0_m1;
+//       stepper1.moveTo(-300);
+//       running = true;
+//       calibrandoEstado = cal_go_0_m1;
 
-    } else if (calibrandoEstado == cal_go_0_m1) {
-      Serial.println(" cal_go_0_m1....");
+//     } else if (calibrandoEstado == cal_go_0_m1) {
+//       Serial.println(" cal_go_0_m1....");
 
-    //  stepper1.stop();
+//     //  stepper1.stop();
 
-      stepper1.setCurrentPosition(0);
-      stepper1.runToNewPosition(500);
-      stepper1.setCurrentPosition(0);
+//       stepper1.setCurrentPosition(0);
+//       stepper1.runToNewPosition(500);
+//       stepper1.setCurrentPosition(0);
 
-      stepper2.moveTo(-3000);
-      running = true;
-      calibrandoEstado = cal_go_0_m2;
+//       stepper2.moveTo(-3000);
+//       running = true;
+//       calibrandoEstado = cal_go_0_m2;
 
-    } else if (calibrandoEstado == cal_go_0_m2) {
-      Serial.println(" cal_go_0_m2....");
+//     } else if (calibrandoEstado == cal_go_0_m2) {
+//       Serial.println(" cal_go_0_m2....");
 
-  //    stepper2.stop();
+//   //    stepper2.stop();
 
-      stepper2.setCurrentPosition(0);
-      stepper2.runToNewPosition(500);
-      stepper2.setCurrentPosition(0);
+//       stepper2.setCurrentPosition(0);
+//       stepper2.runToNewPosition(500);
+//       stepper2.setCurrentPosition(0);
 
-      stepper3.moveTo(-3000);
-      running = true;
-      calibrandoEstado = cal_go_0_m3;
+//       stepper3.moveTo(-3000);
+//       running = true;
+//       calibrandoEstado = cal_go_0_m3;
 
-    } else if (calibrandoEstado == cal_go_0_m3) {
-      Serial.println(" cal_go_0_m3....");
+//     } else if (calibrandoEstado == cal_go_0_m3) {
+//       Serial.println(" cal_go_0_m3....");
 
-    //  stepper3.stop();
-       stepper3.setCurrentPosition(0);
-      stepper3.runToNewPosition(500);
-       stepper3.setCurrentPosition(0);
+//     //  stepper3.stop();
+//        stepper3.setCurrentPosition(0);
+//       stepper3.runToNewPosition(500);
+//        stepper3.setCurrentPosition(0);
 
-      stepper4.moveTo(-3000);
-      running = true;
-      calibrandoEstado = cal_go_0_m4;
+//       stepper4.moveTo(-3000);
+//       running = true;
+//       calibrandoEstado = cal_go_0_m4;
 
-    } else if (calibrandoEstado == cal_go_0_m4) {
-      Serial.println(" cal_go_0_m4....");
+//     } else if (calibrandoEstado == cal_go_0_m4) {
+//       Serial.println(" cal_go_0_m4....");
 
-      //stepper4.stop();
-       stepper4.setCurrentPosition(0);
-      stepper4.runToNewPosition(500);
-       stepper4.setCurrentPosition(0);
-
-
-      stepper5.moveTo(-3000);
-      running = true;
-      calibrandoEstado = cal_go_0_m5;
-
-    } else if (calibrandoEstado == cal_go_0_m5) {
-      Serial.println(" cal_go_0_m5....");
-
-      //stepper5.stop();
-
-      stepper5.setCurrentPosition(0);
-      stepper5.runToNewPosition(500);
-      stepper5.setCurrentPosition(0);
+//       //stepper4.stop();
+//        stepper4.setCurrentPosition(0);
+//       stepper4.runToNewPosition(500);
+//        stepper4.setCurrentPosition(0);
 
 
-      stepper6.moveTo(-3000);
-      running = true;
-      calibrandoEstado = cal_go_0_m6;
+//       stepper5.moveTo(-3000);
+//       running = true;
+//       calibrandoEstado = cal_go_0_m5;
 
-    } else if (calibrandoEstado == cal_go_0_m6) {
-      Serial.println(" cal_go_0_m6....");
+//     } else if (calibrandoEstado == cal_go_0_m5) {
+//       Serial.println(" cal_go_0_m5....");
 
-    //  stepper6.stop();
-     stepper6.setCurrentPosition(0);
-      stepper6.runToNewPosition(500);
+//       //stepper5.stop();
+
+//       stepper5.setCurrentPosition(0);
+//       stepper5.runToNewPosition(500);
+//       stepper5.setCurrentPosition(0);
+
+
+//       stepper6.moveTo(-3000);
+//       running = true;
+//       calibrandoEstado = cal_go_0_m6;
+
+//     } else if (calibrandoEstado == cal_go_0_m6) {
+//       Serial.println(" cal_go_0_m6....");
+
+//     //  stepper6.stop();
+//      stepper6.setCurrentPosition(0);
+//       stepper6.runToNewPosition(500);
      
-      stepper1.setCurrentPosition(0);
-      stepper2.setCurrentPosition(0);
-      stepper3.setCurrentPosition(0);
-      stepper4.setCurrentPosition(0);
-      stepper5.setCurrentPosition(0);
-      stepper6.setCurrentPosition(0);
-      calibrandoEstado = cal_Completo;
+//       stepper1.setCurrentPosition(0);
+//       stepper2.setCurrentPosition(0);
+//       stepper3.setCurrentPosition(0);
+//       stepper4.setCurrentPosition(0);
+//       stepper5.setCurrentPosition(0);
+//       stepper6.setCurrentPosition(0);
+//       calibrandoEstado = cal_Completo;
 
 
-      flag = true;
-    }
+//       flag = true;
+//     }
 
 
-  } else {
-    flag = true;
-  }
+//   } else {
+//     flag = true;
+//   }
 
-  return flag;
-}
+//   return flag;
+// }

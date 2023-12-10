@@ -294,9 +294,10 @@ void rainbow() {
 
   // FastLED's built-in rainbow generator
   // fill_rainbow_circular(leds1, NUM_LEDS1, gHue, 7);
-  fill_rainbow_circular(leds1, NUM_LEDS1, gHue, true);
+  //fill_rainbow_circular(leds1, NUM_LEDS1, gHue, true);
+  fill_rainbow(leds1, NUM_LEDS1, gHue, true);
   fill_rainbow(leds2, NUM_LEDS2, gHue, false);
-  fill_rainbow_circular(leds3, NUM_LEDS3, gHue, true);
+  fill_rainbow(leds3, NUM_LEDS3, gHue, true);
 }
 
 void addGlitter(fract8 chanceOfGlitter) {

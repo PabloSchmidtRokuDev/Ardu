@@ -1,7 +1,9 @@
 #include "arduinoFFT.h"
 
 #include <Arduino.h>
-#include "FastLED.h"
+#include <FastLED.h>
+
+FASTLED_USING_NAMESPACE
 
 #include <WiFi.h>
 #include <WebSocketsClient.h>
@@ -50,7 +52,17 @@ TaskHandle_t Task2;
 #define PIN_LED_DATA3 13
 
 #define PIN_UV 18
-#define MaxUV 100
+#define MaxUV 200
+
+#define PIN_blanco 25
+#define PIN_azul 4
+#define PIN_verde 2
+
+// int servoPin1 = 26;
+// int servoPin2 = 25;
+// int servoPin3 = 4;
+// int servoPin4 = 2;
+// int servoPin5 = 33;
 
 #define PIN_Enable_Motor 19
 #define PIN_MIC -1
@@ -88,9 +100,18 @@ void setup() {
   pinMode(PIN_MIC, INPUT);
   analogWrite(PIN_UV, MaxUV);
 
+   pinMode(PIN_blanco, OUTPUT);
+ pinMode(PIN_azul, OUTPUT);
+ pinMode(PIN_verde, OUTPUT);
+
+analogWrite(PIN_blanco, MaxUV);
+analogWrite(PIN_azul, MaxUV);
+analogWrite(PIN_azul, MaxUV);
+
+
   Serial.println("cargando leds");
 
-  FastLED.addLeds<LED_TYPE, PIN_LED_DATA, COLOR_ORDER>(leds1, NUM_LEDS1).setCorrection(TypimcalLEDStrip);
+  FastLED.addLeds<LED_TYPE, PIN_LED_DATA, COLOR_ORDER>(leds1, NUM_LEDS1).setCorrection(TypicalLEDStrip);
   FastLED.addLeds<LED_TYPE, PIN_LED_DATA2, COLOR_ORDER>(leds2, NUM_LEDS2).setCorrection(TypicalLEDStrip);
   FastLED.addLeds<LED_TYPE, PIN_LED_DATA3, COLOR_ORDER>(leds3, NUM_LEDS3).setCorrection(TypicalLEDStrip);
 
